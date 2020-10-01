@@ -59,6 +59,7 @@ export default {
     },
     handleBack() {
       this.step = 0;
+      this.modalOpen = false;
     },
     handleInput: debounce(function () {
       this.loading = true;
