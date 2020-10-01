@@ -2,7 +2,7 @@
 
 
 
-This app uses NASA image API to fetch images and display them after passing search query.
+This app uses Pixabay image API to fetch images and display them after passing search query.
 
 ## Project setup
 ```

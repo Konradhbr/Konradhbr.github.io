@@ -5,15 +5,18 @@
                 <img :src="photo">
             </div>
             <div class="description">
-                <h2 class="title">{{title}}</h2>
+                <h2 class="title">Author:  {{title}}</h2>
                 <p class="description">
-                   <!-- {{description}} -->
+                   To see the source click button below
                 </p>
+                <div class="button-wrapper">
+                    <a :href="description" target="_blank"><button type="button" >Click Me!</button></a>
+                </div>
             </div>
         </div>
         <div class="close" @click="$emit('closemodal')"/>
     </div>
-</template>s
+</template>
 
 <script>
 export default {
@@ -28,13 +31,13 @@ export default {
     return {
       photo: null,
       title: null,
-     // description: null,
+      description: null,
     };
   },
   mounted() {
-   this.photo = this.item.largeImageURL;
-   this.title = this.item.user;
-   //this.description = this.item.data[0].description.substring(0, 200);
+    this.photo = this.item.largeImageURL;
+    this.title = this.item.user;
+    this.description = this.item.pageURL;
   },
 };
 </script>
@@ -50,13 +53,17 @@ export default {
 
         @media (min-width: 1024px) {
             max-width: 80%;
-            height: 70%;
+            height: 55%;
             left: 0;
             right: 0;
             top: 0;
             bottom: 0;
             margin: auto;
             box-shadow: 0 30px 30px -10px rgba(0,0,0, .3);
+        }
+
+        @media (min-width: 1600px) {
+            height: 70%;
         }
     }
 
@@ -92,8 +99,8 @@ export default {
     .innerWrapper {
         display: flex;
         height: 100%;
-        padding: 50px;
-        margin-left: -100px;
+        padding: 5px;
+        margin-left: 0px;
         justify-content: center;
         align-items: center;
         flex-direction: column;
@@ -102,8 +109,15 @@ export default {
             flex-direction: row;
 
             .photo {
-                width: 77%;
+                width: 122%;
                 margin-right: 20px;
+                margin-left: -40px;
+            }
+        }
+
+        @media (min-width: 1600px) {
+            .photo {
+                width: 77%;
             }
         }
 
@@ -120,6 +134,23 @@ export default {
         .description {
             color: #333;
             max-width: 400px;
+
+            .button-wrapper {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            button {
+                width: 100px;
+                height: 40px;
+                font-weight: 400;
+                text-align: center;
+                background-color: #333;
+                color: white;
+                border-radius: 17px;
+                    font-family: 'Montserrat', sans-serif;
+            }
         }
 
         .title {

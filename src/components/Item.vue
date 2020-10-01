@@ -36,7 +36,7 @@ export default {
 
         @media (min-width: 768px)
         {
-            min-width: 25vw;
+            width: 30vw;
         }
     }
 </style>

@@ -6,9 +6,10 @@
       <transition name="fade">
         <BackgroundImage v-if="step=== 0"/>
       </transition>
+      <BackBtn v-if="step===1" @click.native="handleBack"/>
       <Claim v-if="step=== 0"/>
       <SearchInput v-model="searchValue" @input="handleInput" :dark="step===1"/>
-      <Footer v-if="step=== 0"/> 
+      <Footer v-if="step=== 0"/>
       <div class="results" v-if="results && !loading && step===1">
         <Item v-for="item in results" :item="item" :key="item.id" @click.native="handleModalOpen(item)"/>
       </div>
@@ -26,6 +27,7 @@ import BackgroundImage from '@/components/BackgroundImage.vue';
 import Item from '@/components/Item.vue';
 import Modal from '@/components/Modal.vue';
 import Footer from '@/components/Footer.vue';
+import BackBtn from '@/components/BackBtn.vue';
 
 
 const API = 'https://pixabay.com/api/?key=18016858-8dfc07526ef2591a79bd76aea';
@@ -38,6 +40,7 @@ export default {
     Item,
     Modal,
     Footer,
+    BackBtn,
   },
   data() {
     return {
@@ -53,6 +56,9 @@ export default {
     handleModalOpen(item) {
       this.modalOpen = true;
       this.modalItem = item;
+    },
+    handleBack() {
+      this.step = 0;
     },
     handleInput: debounce(function () {
       this.loading = true;
